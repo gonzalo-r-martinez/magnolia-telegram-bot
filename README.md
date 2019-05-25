@@ -1,4 +1,4 @@
-# Magnoloia Telegram Bot
+# Magnolia Telegram Bot
 
 [![Magnolia compatibility](https://img.shields.io/badge/magnolia--cms-6.0-brightgreen.svg)](https://www.magnolia-cms.com)  [![License Info](http://img.shields.io/badge/license-The%20MIT%20License-brightgreen.svg)](https://github.com/gonzalo-r-martinez/magnolia-telegram-bot/blob/master/LICENSE)  [![Telegram](http://trellobot.doomdns.org/telegrambadge.svg)](https://telegram.me/JavaBotsApi)  
 
