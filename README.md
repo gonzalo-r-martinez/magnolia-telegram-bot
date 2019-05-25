@@ -11,23 +11,24 @@ The module instantiates the bot on the Author server through the [API Telegram B
 ## Features
 
 The following actions are allowed through keyboard commands:
- Start: 
+
+Start: 
 >![start command](https://github.com/gonzalo-r-martinez/magnolia-telegram-bot/raw/master/src/main/resources/magnolia-telegram-bot/webresources/demo/start.png)
 
- Search tours: 
+Search tours: 
 >![Search tours](https://github.com/gonzalo-r-martinez/magnolia-telegram-bot/raw/master/src/main/resources/magnolia-telegram-bot/webresources/demo/tours.png)
 
-> Search assets: 
-![Search assets](https://github.com/gonzalo-r-martinez/magnolia-telegram-bot/raw/master/src/main/resources/magnolia-telegram-bot/webresources/demo/assets.png)
+Search assets: 
+>![Search assets](https://github.com/gonzalo-r-martinez/magnolia-telegram-bot/raw/master/src/main/resources/magnolia-telegram-bot/webresources/demo/assets.png)
 
-> Login: 
-![Login](https://github.com/gonzalo-r-martinez/magnolia-telegram-bot/raw/master/src/main/resources/magnolia-telegram-bot/webresources/demo/login.png)
+Login: 
+>![Login](https://github.com/gonzalo-r-martinez/magnolia-telegram-bot/raw/master/src/main/resources/magnolia-telegram-bot/webresources/demo/login.png)
 
-> Publish: 
-![Publish](https://github.com/gonzalo-r-martinez/magnolia-telegram-bot/raw/master/src/main/resources/magnolia-telegram-bot/webresources/demo/publish.png)
+Publish: 
+>![Publish](https://github.com/gonzalo-r-martinez/magnolia-telegram-bot/raw/master/src/main/resources/magnolia-telegram-bot/webresources/demo/publish.png)
 
-> Logout: 
-![Publish](https://github.com/gonzalo-r-martinez/magnolia-telegram-bot/raw/master/src/main/resources/magnolia-telegram-bot/webresources/demo/logout.png)
+Logout: 
+>![Publish](https://github.com/gonzalo-r-martinez/magnolia-telegram-bot/raw/master/src/main/resources/magnolia-telegram-bot/webresources/demo/logout.png)
 
 ## Configuration
 
