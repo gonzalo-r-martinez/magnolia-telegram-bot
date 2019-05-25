@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>info.magnolia.maven.poms</groupId>
+		<artifactId>magnolia-parent-pom-community</artifactId>
+		<version>36</version>
+	</parent>
+	<groupId>com.vass.retos</groupId>
+	<artifactId>magnolia-telegram-bot</artifactId>
+	<version>0.0.1</version>
+	<packaging>jar</packaging>
+	<name>Magnolia Telegram Bot</name>
+	<description>Module to access Magnolia through Telegram Bot</description>
+	<properties>
+		<magnoliaBundleVersion>6.0</magnoliaBundleVersion>
+		<javaVersion>1.8</javaVersion>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>info.magnolia.bundle</groupId>
+				<artifactId>magnolia-bundle-parent</artifactId>
+				<version>${magnoliaBundleVersion}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>info.magnolia</groupId>
+			<artifactId>magnolia-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>info.magnolia</groupId>
+			<artifactId>magnolia-i18n</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>info.magnolia.templating</groupId>
+			<artifactId>magnolia-templating-essentials-models</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>info.magnolia.restclient</groupId>
+			<artifactId>magnolia-rest-client-app</artifactId>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.telegram/telegrambots -->
+		<dependency>
+			<groupId>org.telegram</groupId>
+			<artifactId>telegrambots</artifactId>
+			<version>4.1.2</version>
+		</dependency>
+
+		<!-- https://github.com/rubenlagus/TelegramBots/tree/master/telegrambots-chat-session-bot -->
+		<dependency>
+			<groupId>org.telegram</groupId>
+			<artifactId>telegrambots-chat-session-bot</artifactId>
+			<version>4.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.vdurmont</groupId>
+			<artifactId>emoji-java</artifactId>
+			<version>4.0.0</version>
+		</dependency>
+
+
+		<!-- TEST -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+					<source>${javaVersion}</source>
+					<target>${javaVersion}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+
+		<!-- default resources configuration which will filter the module descriptor -->
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*</include>
+				</includes>
+			</resource>
+			<resource>
+				<filtering>true</filtering>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>META-INF/magnolia/*</include>
+				</includes>
+			</resource>
+		</resources>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>magnolia.public</id>
+			<url>https://nexus.magnolia-cms.com/content/groups/public</url>
+			<snapshots>
+			</snapshots>
+		</repository>
+		<!-- IF YOU NEED MODULES FROM THE ENTERPRISE VERSION, UNCOMMENT THE FOLLOWING 
+			REPOSITORY -->
+		<!-- <repository> <id>magnolia.enterprise.releases</id> <url>https://nexus.magnolia-cms.com/content/repositories/magnolia.enterprise.releases</url> 
+			<snapshots> <enabled>false</enabled> </snapshots> </repository> -->
+		<repository>
+			<id>vaadin-addons</id>
+			<url>https://maven.vaadin.com/vaadin-addons</url>
+		</repository>
+	</repositories>
+
+</project>

@@ -1,0 +1,10 @@
+templateScript: /magnolia-telegram-bot/templates/pages/dummy-page.ftl
+renderType: freemarker
+visible: true
+dialog: magnolia-telegram-bot:pages/dummy-page-properties
+areas:
+  main:
+    renderType: freemarker
+    availableComponents:
+      dummy-component:
+        id: magnolia-telegram-bot:components/dummy-component

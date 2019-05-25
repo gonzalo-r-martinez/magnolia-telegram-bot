@@ -1,0 +1,3 @@
+class: info.magnolia.rest.delivery.jcr.v2.JcrDeliveryEndpointDefinition
+workspace: tours
+includeSystemProperties: true

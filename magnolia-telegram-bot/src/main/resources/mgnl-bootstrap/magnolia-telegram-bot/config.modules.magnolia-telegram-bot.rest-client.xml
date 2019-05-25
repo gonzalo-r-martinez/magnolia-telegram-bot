@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sv:node xmlns:sv="http://www.jcp.org/jcr/sv/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" sv:name="rest-client">
+  <sv:property sv:name="jcr:primaryType" sv:type="Name">
+    <sv:value>mgnl:contentNode</sv:value>
+  </sv:property>
+  <sv:node sv:name="telegramBot">
+    <sv:property sv:name="jcr:primaryType" sv:type="Name">
+      <sv:value>mgnl:contentNode</sv:value>
+    </sv:property>
+    <sv:property sv:name="baseUrl" sv:type="String">
+      <sv:value>http://localhost:8080/magnoliaAuthor/.rest</sv:value>
+    </sv:property>
+    <sv:property sv:name="class" sv:type="String">
+      <sv:value>info.magnolia.resteasy.client.RestEasyClientDefinition</sv:value>
+    </sv:property>
+    <sv:property sv:name="clientFactoryClass" sv:type="String">
+      <sv:value>info.magnolia.resteasy.client.factory.RestEasyClientFactory</sv:value>
+    </sv:property>
+  </sv:node>
+</sv:node>
+

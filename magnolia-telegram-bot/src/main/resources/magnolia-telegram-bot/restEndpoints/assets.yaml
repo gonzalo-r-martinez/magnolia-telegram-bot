@@ -1,0 +1,6 @@
+class: info.magnolia.rest.delivery.jcr.v2.JcrDeliveryEndpointDefinition
+endpointPath: assets
+workspace: dam
+includeSystemProperties: true
+nodeTypes:
+  - mgnl:asset

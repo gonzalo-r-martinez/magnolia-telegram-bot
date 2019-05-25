@@ -1,0 +1,2 @@
+templateScript: /magnolia-telegram-bot/templates/components/dummy-component.ftl
+renderType: freemarker
