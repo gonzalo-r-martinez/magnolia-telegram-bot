@@ -57,6 +57,7 @@ public class MgnlTelegramBotVersionHandler extends DefaultModuleVersionHandler {
     protected List<Task> getExtraInstallTasks(InstallContext ctx) {
 
         final List<Task> tasks = new ArrayList<>();
+        //enable access to the anonymous user the REST endpoints
         tasks.add(new AddURIPermissionTask("Rest access", "anonymous", "/.rest/tours*", AddURIPermissionTask.GET));
         tasks.add(new AddURIPermissionTask("Rest access", "anonymous", "/.rest/assets*", AddURIPermissionTask.GET));
         return tasks;

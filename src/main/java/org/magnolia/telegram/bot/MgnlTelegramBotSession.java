@@ -138,7 +138,7 @@ public class MgnlTelegramBotSession extends TelegramLongPollingSessionBot {
     @Override
     public void onUpdateReceived(Update update, Optional<Session> botSession) {
         if (update.hasMessage() && update.getMessage().hasText()) {
-            log.debug("onUpdateReceived hay mensajes");
+            log.debug("onUpdateReceived");
             // Set variables
             String messageText = update.getMessage().getText();
             log.debug("onUpdateReceived Mesnaje {}", messageText);
@@ -161,8 +161,6 @@ public class MgnlTelegramBotSession extends TelegramLongPollingSessionBot {
             if (STATUS_WAIT_COMMAND.equals(status)) {
                 if (messageText.equals("/start")) {
                     startCommand(chatId, session);
-                } else if (messageText.equals("/markup")) {
-                    markupCommand(chatId);
                 } else if (messageText.equals(i18n.translate("magnolia-telegram-bot.keyboard.search.assets"))) {
                     damCommand(session, chatId, messageId);
                 } else if (messageText.equals(i18n.translate("magnolia-telegram-bot.keyboard.search.tours"))) {
@@ -233,12 +231,13 @@ public class MgnlTelegramBotSession extends TelegramLongPollingSessionBot {
      * @return the reply keyboard markup
      */
     private ReplyKeyboardMarkup markupMain(Session session) {
-
+        log.debug("ReplyKeyboardMarkup");
         ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
 
         UserBean user = null;
 
         if (session != null) {
+            log.debug("There is a user");
             user = (UserBean) session.getAttribute(PARAMETER_USER);
         }
 
@@ -266,45 +265,8 @@ public class MgnlTelegramBotSession extends TelegramLongPollingSessionBot {
         keyboard.add(row2);
 
         keyboardMarkup.setKeyboard(keyboard);
-
+        log.debug("ReplyKeyboardMarkup end");
         return keyboardMarkup;
-    }
-
-    /**
-     * Markup command.
-     *
-     * @param chatId the chat id
-     */
-    private void markupCommand(long chatId) {
-        SendMessage message = new SendMessage() // Create a messageobject object
-                .setChatId(chatId).setText("Here is your keyboard");
-        // Create ReplyKeyboardMarkup object
-        ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
-        // Create the keyboard (list of keyboard rows)
-        List<KeyboardRow> keyboard = new ArrayList<>();
-        // Create a keyboard row
-        KeyboardRow row = new KeyboardRow();
-        // Set each button, you can also use KeyboardButton objects if you need
-        // something else than text
-        row.add("Row 1 Button 1");
-        row.add("Row 1 Button 2");
-        row.add("Row 1 Button 3");
-        // Add the first row to the keyboard
-        keyboard.add(row);
-        // Create another keyboard row
-        row = new KeyboardRow();
-        // Set each button for the second line
-        row.add("Row 2 Button 1");
-        row.add("Row 2 Button 2");
-        row.add("Row 2 Button 3");
-        // Add the second row to the keyboard
-        keyboard.add(row);
-
-        // Set the keyboard to the markup
-        keyboardMarkup.setKeyboard(keyboard);
-        // Add it to the message
-        message.setReplyMarkup(keyboardMarkup);
-        sendText(message);
     }
 
     /**
@@ -315,13 +277,13 @@ public class MgnlTelegramBotSession extends TelegramLongPollingSessionBot {
      * @param messageId the message id
      */
     private void damCommand(Session session, long chatId, Integer messageId) {
-
+        log.debug("damCommand");
         SendMessage message = new SendMessage() // Create a message object object
                 .setChatId(chatId).setText(i18n.translate("magnolia-telegram-bot.message.dam"))
                 .setReplyToMessageId(messageId);
 
         session.setAttribute(PARAMETER_STATUS, STATUS_DAM_INPUT);
-
+        log.debug("damCommand end");
         sendText(message);
     }
 
@@ -333,6 +295,8 @@ public class MgnlTelegramBotSession extends TelegramLongPollingSessionBot {
      * @param messageText the message text
      */
     private void damSearch(Session session, long chatId, String messageText) {
+        log.debug("damSearch");
+
         MgnlTelegramJCR jcrUtil = new MgnlTelegramJCR();
 
         List<org.magnolia.telegram.bot.beans.asset.Result> assets = jcrUtil
@@ -358,6 +322,7 @@ public class MgnlTelegramBotSession extends TelegramLongPollingSessionBot {
                 .setChatId(chatId).setText("");
         message.setReplyMarkup(markupMain(session));
         session.setAttribute(PARAMETER_STATUS, STATUS_WAIT_COMMAND);
+        log.debug("damSearch end");
     }
 
     /**
@@ -367,6 +332,7 @@ public class MgnlTelegramBotSession extends TelegramLongPollingSessionBot {
      * @param chatId the chat id
      */
     private void sendAsset(org.magnolia.telegram.bot.beans.asset.Result asset, long chatId) {
+        log.debug("sendAsset");
 
         String caption = asset.getName() + "\n" + "Activation Status: " + getStatusCode(asset.getMgnlActivationStatus())
                 + "\nLast Modified: " + asset.getMgnlLastModified();
@@ -380,6 +346,8 @@ public class MgnlTelegramBotSession extends TelegramLongPollingSessionBot {
         sendPhoto(msg);
 
         IOUtils.closeQuietly(file);
+        log.debug("sendAsset end");
+
     }
 
     /**
@@ -390,7 +358,7 @@ public class MgnlTelegramBotSession extends TelegramLongPollingSessionBot {
      * @param messageId the message id
      */
     private void toursCommand(Session session, long chatId, Integer messageId) {
-        // /tours
+        log.debug("toursCommand");
         SendMessage message = new SendMessage() // Create a message object object
                 .setChatId(chatId).setText(i18n.translate("magnolia-telegram-bot.message.tours"))
                 .setReplyToMessageId(messageId);
@@ -398,6 +366,7 @@ public class MgnlTelegramBotSession extends TelegramLongPollingSessionBot {
         session.setAttribute(PARAMETER_STATUS, STATUS_TOUR_INPUT);
 
         sendText(message);
+        log.debug("sendAsset end");
     }
 
     /**
@@ -408,6 +377,7 @@ public class MgnlTelegramBotSession extends TelegramLongPollingSessionBot {
      * @param messageText the message text
      */
     private void toursSearch(Session session, long chatId, String messageText) {
+        log.debug("toursCommand");
         MgnlTelegramJCR jcrUtil = new MgnlTelegramJCR();
 
         List<Result> tours = jcrUtil.getTourRest((UserBean) session.getAttribute(PARAMETER_USER), messageText);
@@ -430,6 +400,7 @@ public class MgnlTelegramBotSession extends TelegramLongPollingSessionBot {
         }
 
         session.setAttribute(PARAMETER_STATUS, STATUS_WAIT_COMMAND);
+        log.debug("toursCommand end");
     }
 
     /**
@@ -439,7 +410,7 @@ public class MgnlTelegramBotSession extends TelegramLongPollingSessionBot {
      * @param chatId the chat id
      */
     private void sendTour(Result tour, long chatId) {
-
+        log.debug("sendTour");
         String caption = tour.getName() + "\n" + "Activation Status: " + getStatusCode(tour.getMgnlActivationStatus())
                 + "\nLast Modified: " + tour.getMgnlLastModified();
         String imagen = tour.getImage();
@@ -456,6 +427,7 @@ public class MgnlTelegramBotSession extends TelegramLongPollingSessionBot {
         sendPhoto(msg);
 
         IOUtils.closeQuietly(file);
+        log.debug("sendTour end");
     }
 
     /**
@@ -466,13 +438,14 @@ public class MgnlTelegramBotSession extends TelegramLongPollingSessionBot {
      * @param messageId the message id
      */
     private void publishCommand(Session session, long chatId, Integer messageId) {
-
+        log.debug("publishCommand");
         SendMessage message = new SendMessage() // Create a message object object
                 .setChatId(chatId).setText(i18n.translate("Enter the path of the page")).setReplyToMessageId(messageId);
 
         session.setAttribute(PARAMETER_STATUS, STATUS_PUBLISH_INPUT);
 
         sendText(message);
+        log.debug("publishCommand end");
     }
 
     /**
@@ -483,6 +456,7 @@ public class MgnlTelegramBotSession extends TelegramLongPollingSessionBot {
      * @param messageText the message text
      */
     private void publishPage(Session session, long chatId, String messageText) {
+        log.debug("publishPage");
         SendMessage message = new SendMessage() // Create a message object object
                 .setChatId(chatId).setText(i18n.translate("magnolia-telegram-bot.message.publish.correct"));
         message.setReplyMarkup(markupMain(session));
@@ -492,6 +466,7 @@ public class MgnlTelegramBotSession extends TelegramLongPollingSessionBot {
         }
         session.setAttribute(PARAMETER_STATUS, STATUS_WAIT_COMMAND);
         sendText(message);
+        log.debug("publishPage end");
     }
 
     /**
@@ -502,7 +477,7 @@ public class MgnlTelegramBotSession extends TelegramLongPollingSessionBot {
      * @param messageId the message id
      */
     private void loginCommand(Session session, long chatId, Integer messageId) {
-
+        log.debug("loginCommand");
         SendMessage message = new SendMessage() // Create a message object object
                 .setChatId(chatId).setText(i18n.translate("magnolia-telegram-bot.message.login"))
                 .setReplyToMessageId(messageId);
@@ -510,6 +485,7 @@ public class MgnlTelegramBotSession extends TelegramLongPollingSessionBot {
         session.setAttribute(PARAMETER_STATUS, STATUS_LOGIN_INPUT);
 
         sendText(message);
+        log.debug("loginCommand end");
     }
 
     /**
@@ -520,7 +496,7 @@ public class MgnlTelegramBotSession extends TelegramLongPollingSessionBot {
      * @param messageId the message id
      */
     private void logoutCommand(Session session, long chatId, Integer messageId) {
-
+        log.debug("logoutCommand");
         SendMessage message = new SendMessage() // Create a message object object
                 .setChatId(chatId).setText(i18n.translate("magnolia-telegram-bot.message.logout"))
                 .setReplyToMessageId(messageId);
@@ -532,6 +508,7 @@ public class MgnlTelegramBotSession extends TelegramLongPollingSessionBot {
         session.setAttribute(PARAMETER_STATUS, STATUS_WAIT_COMMAND);
 
         sendText(message);
+        log.debug("logoutCommand end");
     }
 
     /**
@@ -542,7 +519,7 @@ public class MgnlTelegramBotSession extends TelegramLongPollingSessionBot {
      * @param messageId the message id
      */
     private void helpCommand(Session session, long chatId, Integer messageId) {
-
+        log.debug("helpCommand");
         SendMessage message = new SendMessage() // Create a message object object
                 .setChatId(chatId).setText(i18n.translate("magnolia-telegram-bot.message.help"))
                 .setReplyToMessageId(messageId);
@@ -551,6 +528,7 @@ public class MgnlTelegramBotSession extends TelegramLongPollingSessionBot {
         session.setAttribute(PARAMETER_STATUS, STATUS_WAIT_COMMAND);
 
         sendText(message);
+        log.debug("helpCommand end");
     }
 
     /**
@@ -561,6 +539,7 @@ public class MgnlTelegramBotSession extends TelegramLongPollingSessionBot {
      * @param messageText the message text
      */
     private void processLogin(Session session, long chatId, String messageText) {
+        log.debug("processLogin");
         String[] arrayString = messageText.split(":");
         SendMessage message = new SendMessage() // Create a message object object
                 .setChatId(chatId);
@@ -573,6 +552,7 @@ public class MgnlTelegramBotSession extends TelegramLongPollingSessionBot {
         session.setAttribute(PARAMETER_STATUS, STATUS_WAIT_COMMAND);
         message.setReplyMarkup(markupMain(session));
         sendText(message);
+        log.debug("processLogin end");
     }
 
     /**
@@ -616,7 +596,7 @@ public class MgnlTelegramBotSession extends TelegramLongPollingSessionBot {
      * @return the status code
      */
     private String getStatusCode(String status) {
-
+        log.debug("getStatusCode {}", status);
         if ("true".equals(status)) {
             return ":white_check_mark:";
         } else {

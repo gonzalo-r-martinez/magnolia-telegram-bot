@@ -87,7 +87,7 @@ public class MgnlTelegramJCR {
      * @return true, if successful
      */
     public boolean publishWebsite(UserBean user, String pathPage) {
-
+        log.debug("publishWebsite {}", pathPage);
         MgnlTegramBotRestService service = getService();
         String resultado = "";
         if (service != null) {
@@ -95,11 +95,12 @@ public class MgnlTelegramJCR {
                 resultado = service.commands(getAuthorizationToken(user), RepositoryConstants.WEBSITE, COMMAND_ACTIVATE,
                         "{" + "  \"repository\": \"" + RepositoryConstants.WEBSITE + "\"," + "  \"path\": \"" + pathPage
                                 + "\"," + "  \"recursive\": \"false\"" + "}");
-            }catch(Exception e) {
+            } catch (Exception e) {
                 log.error("Error publish page");
             }
-            
+
         }
+        log.debug("publishWebsite end {}", resultado);
         return resultado.equals(COMMAND_RESULT_OK);
     }
 
@@ -111,7 +112,7 @@ public class MgnlTelegramJCR {
      * @return the asset rest
      */
     public List<org.magnolia.telegram.bot.beans.asset.Result> getAssetRest(UserBean user, String query) {
-
+        log.debug("getAssetRest {}", query);
         MgnlTegramBotRestService service = getService();
         if (service != null) {
             String consulta = service.getAssets(getAuthorizationToken(user), query);
@@ -119,6 +120,7 @@ public class MgnlTelegramJCR {
             Asset assets = gson.fromJson(consulta, org.magnolia.telegram.bot.beans.asset.Asset.class);
             return assets.getResults();
         }
+        log.debug("getAssetRest no result");
         return Collections.emptyList();
     }
 
@@ -130,7 +132,7 @@ public class MgnlTelegramJCR {
      * @return the tour rest
      */
     public List<Result> getTourRest(UserBean user, String query) {
-
+        log.debug("getTourRest {}", query);
         MgnlTegramBotRestService service = getService();
         if (service != null) {
             String consulta = service.getTours(getAuthorizationToken(user), query);
@@ -138,6 +140,7 @@ public class MgnlTelegramJCR {
             Tour tours = gson.fromJson(consulta, Tour.class);
             return tours.getResults();
         }
+        log.debug("getTourRest no result");
         return Collections.emptyList();
     }
 
@@ -148,10 +151,12 @@ public class MgnlTelegramJCR {
      * @return the authorization token
      */
     private String getAuthorizationToken(UserBean user) {
+        log.debug("getAuthorizationToken ");
         if (user != null) {
             String authString = user.getUsername() + ":" + user.getPassword();
             return "Basic " + Base64.getEncoder().encodeToString(authString.getBytes());
         } else {
+            log.debug("getAuthorizationToken no user");
             return "";
         }
     }
@@ -162,11 +167,12 @@ public class MgnlTelegramJCR {
      * @return the service
      */
     private MgnlTegramBotRestService getService() {
+        log.debug("getService ");
         RestEasyClient client = null;
         try {
             client = (RestEasyClient) Components.getComponent(RestClientRegistry.class).getRestClient(REST_CLIENT);
         } catch (RegistrationException e) {
-            log.error("Error al obtener el servicio", e);
+            log.error("Error get service", e);
         }
         if (client != null) {
             return client.getClientService(MgnlTegramBotRestService.class);
@@ -174,7 +180,14 @@ public class MgnlTelegramJCR {
         return null;
     }
 
+    /**
+     * Gets the session.
+     *
+     * @param workspace the workspace
+     * @return the session
+     */
     private Session getSession(String workspace) {
+        log.debug("getSession ");
         try {
             return LifeTimeJCRSessionUtil.getSession(workspace);
         } catch (RepositoryException e) {
@@ -190,6 +203,7 @@ public class MgnlTelegramJCR {
      * @return the content stream
      */
     public InputStream getContentStream(String idAsset) {
+        log.debug("getContentStream ");
         try {
             Session session = getSession(WORKSPACE_DAM);
             if (session != null) {
