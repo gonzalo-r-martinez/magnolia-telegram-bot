@@ -1,5 +1,5 @@
 # Magnoloia Telegram Bot
-[![Magnolia compatibility](https://img.shields.io/badge/magnolia--cms-6.0-brightgreen.svg)](https://www.magnolia-cms.com)  [![License Info](http://img.shields.io/badge/license-The%20MIT%20License-brightgreen.svg)](https://github.com/gonzalo-r-martinez/magnolia-telegram-bot/blob/master/LICENSE)  [![Telegram](http://trellobot.doomdns.org/telegrambadge.svg)](https://telegram.me/JavaBotsApi)  
+[![Magnolia compatibility](https://img.shields.io/badge/magnolia--cms-6.0-brightgreen.svg)](https://www.magnolia-cms.com)  [![License Info](http://img.shields.io/badge/license-MIT%20License-brightgreen.svg)](https://github.com/gonzalo-r-martinez/magnolia-telegram-bot/blob/master/LICENSE)  [![Telegram](http://trellobot.doomdns.org/telegrambadge.svg)](https://telegram.me/JavaBotsApi)  
 
 This module instantiates a Telegram bot, which allows access to the contents of Magnolia. Initially this bot is designed to work with the Magnolia 6.0 Community Edition (CE) demo version and only allows to search about the tours and the assets, besides publishing pages when the user has logged in through the bot. But in a small way it can be extended to access other workpspaces.
 
