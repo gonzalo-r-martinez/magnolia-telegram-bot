@@ -37,7 +37,7 @@ Then in the configuration of the module we will only have to enter the API key a
 
 ![Config](https://github.com/gonzalo-r-martinez/magnolia-telegram-bot/raw/master/src/main/resources/magnolia-telegram-bot/webresources/demo/config.png)
 
-Configuración del endpoint, tendremos que especificar la URL de acceso a la API REST de Magnolia.
+Finally we will have to configure the URL of access to the endopoint of the REST API of Magnolia.
 
 ![Rest](https://github.com/gonzalo-r-martinez/magnolia-telegram-bot/raw/master/src/main/resources/magnolia-telegram-bot/webresources/demo/rest.png)
 
