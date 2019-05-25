@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE module SYSTEM "module.dtd" >
 <module>
-  <name>magnolia-telegram-bot</name>
+  <name>telegram-bot-magnolia</name>
   <displayName>${project.name}</displayName>
   <description>${project.description}</description>
   <class>org.magnolia.telegram.bot.module.MgnlTelegramBotModule</class>
