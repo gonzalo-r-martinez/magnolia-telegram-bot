@@ -13,32 +13,32 @@ The module instantiates the bot on the Author server through the [API Telegram B
 The following actions are allowed through keyboard commands:
 
 Start: 
->![start command](https://github.com/gonzalo-r-martinez/magnolia-telegram-bot/raw/master/src/main/resources/magnolia-telegram-bot/webresources/demo/start.png)
+>![start command](https://github.com/gonzalo-r-martinez/telegram-bot-magnolia/raw/master/src/main/resources/telegram-bot-magnolia/webresources/demo/start.png)
 
 Search tours: 
->![Search tours](https://github.com/gonzalo-r-martinez/magnolia-telegram-bot/raw/master/src/main/resources/magnolia-telegram-bot/webresources/demo/tours.png)
+>![Search tours](https://github.com/gonzalo-r-martinez/telegram-bot-magnolia/raw/master/src/main/resources/telegram-bot-magnolia/webresources/demo/tours.png)
 
 Search assets: 
->![Search assets](https://github.com/gonzalo-r-martinez/magnolia-telegram-bot/raw/master/src/main/resources/magnolia-telegram-bot/webresources/demo/assets.png)
+>![Search assets](https://github.com/gonzalo-r-martinez/telegram-bot-magnolia/raw/master/src/main/resources/telegram-bot-magnolia/webresources/demo/assets.png)
 
 Login: 
->![Login](https://github.com/gonzalo-r-martinez/magnolia-telegram-bot/raw/master/src/main/resources/magnolia-telegram-bot/webresources/demo/login.png)
+>![Login](https://github.com/gonzalo-r-martinez/telegram-bot-magnolia/raw/master/src/main/resources/telegram-bot-magnolia/webresources/demo/login.png)
 
 Publish: 
->![Publish](https://github.com/gonzalo-r-martinez/magnolia-telegram-bot/raw/master/src/main/resources/magnolia-telegram-bot/webresources/demo/publish.png)
+>![Publish](https://github.com/gonzalo-r-martinez/telegram-bot-magnolia/raw/master/src/main/resources/telegram-bot-magnolia/webresources/demo/publish.png)
 
 Logout: 
->![Publish](https://github.com/gonzalo-r-martinez/magnolia-telegram-bot/raw/master/src/main/resources/magnolia-telegram-bot/webresources/demo/logout.png)
+>![Publish](https://github.com/gonzalo-r-martinez/telegram-bot-magnolia/raw/master/src/main/resources/telegram-bot-magnolia/webresources/demo/logout.png)
 
 ## Configuration
 
 First, we create a new bot using the [Bot Father of Telegram](https://telegram.me/botfather). We generate an API key for the bot and the desired bot name. Then, we add the API key and the name that we have generated in the module configuration.
 
-![Config](https://github.com/gonzalo-r-martinez/magnolia-telegram-bot/raw/master/src/main/resources/magnolia-telegram-bot/webresources/demo/config.png)
+![Config](https://github.com/gonzalo-r-martinez/telegram-bot-magnolia/raw/master/src/main/resources/telegram-bot-magnolia/webresources/demo/config.png)
 
 Finally, we configure the URL to access the endopoint of the Magnolia REST API.
 
-![Rest](https://github.com/gonzalo-r-martinez/magnolia-telegram-bot/raw/master/src/main/resources/magnolia-telegram-bot/webresources/demo/rest.png)
+![Rest](https://github.com/gonzalo-r-martinez/telegram-bot-magnolia/raw/master/src/main/resources/telegram-bot-magnolia/webresources/demo/rest.png)
 
 ## License
 Code licensed under [MIT License](http://opensource.org/licenses/mit-license.html "MIT License").
