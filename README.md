@@ -2,11 +2,11 @@
 
 [![Magnolia compatibility](https://img.shields.io/badge/magnolia--cms-6.0-brightgreen.svg)](https://www.magnolia-cms.com)  [![License Info](http://img.shields.io/badge/license-The%20MIT%20License-brightgreen.svg)](https://github.com/gonzalo-r-martinez/magnolia-telegram-bot/blob/master/LICENSE)  [![Telegram](http://trellobot.doomdns.org/telegrambadge.svg)](https://telegram.me/JavaBotsApi)  
 
-This module instantiates a Telegram Bot, which allows access to the contents of Magnolia. Initially this bot is designed to work with the community demo version and only allows to search about the tours and the assets, besides publishing pages when the user has logged in through the bot. But in a small way it can be extended to access other workpspaces.
+This module instantiates a Telegram Bot, which accesses to the contents of Magnolia. Initially, this bot is designed to work with the community demo version. It only allows to search the tours and assets and also to publish pages when the user has logged in through the bot. In addition, it can be easily extended to access other workpspaces.
 
 ## How does it work
 
-The module instantiates the bot on the Author server through the [API Telegram Bot](https://github.com/rubenlagus/TelegramBots/tree/master/telegrambots-chat-session-bot) and accesses the contents of Magnolia through the [REST API of Magnolia](https://documentation.magnolia-cms.com/display/DOCS60/REST+API). Once started, a keyboard with the different commands available will be displayed.
+The module instantiates the bot on the Author server through the [API Telegram Bot](https://github.com/rubenlagus/TelegramBots/tree/master/telegrambots-chat-session-bot) and accesses the contents of Magnolia through the [REST API of Magnolia](https://documentation.magnolia-cms.com/display/DOCS60/REST+API). Once it started, a keyboard with the different commands available will be displayed.
 
 ## Features
 
@@ -32,12 +32,11 @@ Logout:
 
 ## Configuration
 
-First we must create a new bot through the [Bot Father of Telegram](https://telegram.me/botfather) where we will generate the API key of the bot and the name we want for the bot.
-Then in the configuration of the module we will only have to enter the API key and the name that we have generated.
+First, we create a new bot using the [Bot Father of Telegram](https://telegram.me/botfather). We generate an API key for the bot and the desired bot name. Then, we add the API key and the name that we have generated in the module configuration.
 
 ![Config](https://github.com/gonzalo-r-martinez/magnolia-telegram-bot/raw/master/src/main/resources/magnolia-telegram-bot/webresources/demo/config.png)
 
-Finally we will have to configure the URL of access to the endopoint of the REST API of Magnolia.
+Finally, we configure the URL to access the endopoint of the Magnolia REST API.
 
 ![Rest](https://github.com/gonzalo-r-martinez/magnolia-telegram-bot/raw/master/src/main/resources/magnolia-telegram-bot/webresources/demo/rest.png)
 
